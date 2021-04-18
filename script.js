@@ -1,7 +1,7 @@
 /**
  * DONE: Create a keydown listener to track what keys are hit
- * TODO: Create a Beat class to represent the beat object in utils.js
- * TODO: Complete triggerBeat() to play upon the press of a,s,d,f,g,h,j,k,l
+ * DONE: Create a Beat class to represent the beat object in utils.js
+ * DONE: Complete triggerBeat() to play upon the press of a,s,d,f,g,h,j,k,l
  * TODO: Button pt1: Initialize color and element values
  * TODO: Button pt2: Set button color upon initialization | Initialize button in beats["65"]
  * TODO: Button pt3: Complete select function to set the color and shadow of button upon pressing
@@ -17,31 +17,31 @@
 
 let beats = {
 	65: {
-		beat: new Beat('./assets/Piano Chord 331.mp3'),
+		beat: new Beat('./assets/Piano_Chord_331.mp3'),
 	},
 	83: {
-		beat: new Beat('./assets/Piano Chord 209.mp3'),
+		beat: new Beat('./assets/Piano_Chord_209.mp3'),
 	},
 	68: {
-		beat: new Beat('./assets/Piano Chord 208.mp3'),
+		beat: new Beat('./assets/Piano_Chord_208.mp3'),
 	},
 	70: {
-		beat: new Beat('./assets/Drum Sticks Hit 3.mp3'),
+		beat: new Beat('./assets/Drum_Sticks_Hit_3.mp3'),
 	},
 	71: {
-		beat: new Beat('./assets/Drum Snare Roll.mp3'),
+		beat: new Beat('./assets/Drum_Snare_Roll.mp3'),
 	},
 	72: {
-		beat: new Beat('./assets/PREL Musical 57.mp3'),
+		beat: new Beat('./assets/PREL_Musical_57.mp3'),
 	},
 	74: {
-		beat: new Beat('./assets/Cymbal Suspended 2.mp3'),
+		beat: new Beat('./assets/Cymbal_Suspended_2.mp3'),
 	},
 	75: {
-		beat: new Beat('./assets/Musical Compos 33.mp3'),
+		beat: new Beat('./assets/Musical_Compos_33.mp3'),
 	},
 	76: {
-		beat: new Beat('./assets/Musical Orches 4.mp3'),
+		beat: new Beat('./assets/Musical_Orches_4.mp3'),
 	},
 };
 
@@ -49,13 +49,16 @@ let beats = {
  * Function to play the beat upon a press of key
  * HINT: use the keyCode
  */
-triggerBeat = (event) => {};
+triggerBeat = (event) => {
+	const keyCode = event.keyCode;
+	if (keyCode in beats) {
+		let keyPress = beats[keyCode];
+		keyPress.beat.play();
+	}
+};
 
 /**
  * Keydown listener to fire triggerBeat function
  * HINT: Log the keyCode of the key
  */
-document.addEventListener('keydown', (event) => {
-	console.log(event);
-	console.log(event.keyCode);
-});
+document.addEventListener('keydown', triggerBeat);
